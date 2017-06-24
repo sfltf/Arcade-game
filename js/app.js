@@ -134,7 +134,36 @@ var player = new Player();
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 // 把玩家对象放进一个叫 player 的变量里面
 
+//宝石拥有属性
+var Gem = function(x, y) {
+    this.sprite = 'images/Gem Orange.png';
+    this.x = x;
+    this.y = y;
+};
 
+//创建3个实例宝石，并且随机化宝石位置（只能在有石头的地方）
+var gemOrange = [];
+for(var j = 0; j < 3; j++) {
+    var gem = new Gem(Math.floor(Math.random() * 5) * 101, Math.floor(Math.random() * 3) * 83 + 58);
+    gemOrange.push(gem);
+}
+
+//绘制宝石
+Gem.prototype.render = function() {
+    Enemy.prototype.render.call(this);
+};
+
+//碰撞检测，并且将重新随机放置碰撞后的宝石位置
+Gem.prototype.update = function(dt) {
+     for(var j = 0; j < gemOrange.length; j++){
+        if(Math.abs(player.x - gemOrange[j].x) < 55){
+            if((Math.abs(player.y - gemOrange[j].y)) < 40){
+                gemOrange[j].x = Math.floor(Math.random() * 5) * 101;
+                gemOrange[j].y = Math.floor(Math.random() * 3) * 83 + 58;
+            }
+       }
+    }
+};
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Play.handleInput()
 // 方法里面。你不需要再更改这段代码了。
 document.addEventListener('keyup', function(e) {
