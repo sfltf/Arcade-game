@@ -80,33 +80,17 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(move) {
     switch (move) {
         case "left":
-            if (this.x < 30) {
-                this.x = 3;
-            } else {
-                this.x -= 101;
-            }
-            break;
+        this.x = (this.x < 30) ? 3 : this.x - 101;
+        break;
         case "right":
-            if (this.x > 400) {
-                this.x = 401;
-            } else {
-                this.x += 101;
-            };
-            break;
+        this.x = (this.x > 400) ? 401 : this.x + 101;
+        break;
         case "up":
-            if (this.y < -10) {
-                this.y = -15;
-            } else {
-                this.y -= 83;
-            };
-            break;
+        this.y = (this.y < -10) ? -15 : this.y - 83;
+        break;
         case "down":
-            if (this.y > 399) {
-                this.y = 400;
-            } else {
-                this.y += 83;
-            }
-            break;
+        this.y = (this.y > 399) ? 400 : this.y + 83;
+        break;
     }
 };
 
