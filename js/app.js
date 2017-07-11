@@ -1,3 +1,4 @@
+"use strict";
 // 这是我们的玩家要躲避的敌人 
 var Enemy = function(i, j) {
     // 要应用到每个敌人的实例的变量写在这里
